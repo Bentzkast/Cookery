@@ -3,31 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cookery.API.Database;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cookery.API.Controllers {
+namespace Cookery.API.Controllers
+{
+
+  [Authorize]
   [Route ("api/[controller]")]
   [ApiController]
-  public class ValuesController : ControllerBase {
+  public class ValuesController : ControllerBase
+  {
     private readonly DataContext _dataContext;
 
-    public ValuesController (DataContext dataContext) {
+    public ValuesController (DataContext dataContext)
+    {
       _dataContext = dataContext;
     }
 
     // routes IActionResult
     // GET api/values
     [HttpGet]
-    public async Task<IActionResult> GetValues () {
+    public async Task<IActionResult> GetValues ()
+    {
       // query the data as a list
       var values = await _dataContext.Values.ToListAsync ();
       return Ok (values);
     }
 
     // GET api/values/5
+    [AllowAnonymous]
     [HttpGet ("{id}")]
-    public async Task<IActionResult> GetValue (int id) {
+    public async Task<IActionResult> GetValue (int id)
+    {
       // query by finding the data by a filter lambda function
       var value = await _dataContext.Values.FirstOrDefaultAsync (val => val.Id == id);
 
