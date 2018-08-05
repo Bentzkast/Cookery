@@ -24,6 +24,7 @@ namespace Cookery.API.Controllers
 
     // routes IActionResult
     // GET api/values
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetValues ()
     {

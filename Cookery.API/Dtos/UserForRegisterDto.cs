@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Cookery.API.Dtos
 {
+    // Data transfer Object
+    // validations
     public class UserForRegisterDto
     {
         [Required]
