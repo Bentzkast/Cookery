@@ -71,6 +71,7 @@ namespace Cookery.API
       }
       else
       {
+        // catch all errors globally
         app.UseExceptionHandler (builder =>
         {
           builder.Run (async context =>
