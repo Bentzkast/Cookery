@@ -39,9 +39,22 @@ namespace Cookery.API.Database
             return users;
         }
 
+        public async Task<Recipe> GetRecipe (int id)
+        {
+            var recipe = await _dataContext.Recipes.FirstOrDefaultAsync (r => r.Id == id);
+            return recipe;
+        }
+
+        public async Task<IEnumerable<Recipe>> GetRecipes ()
+        {
+            var recipes = await _dataContext.Recipes.ToListAsync ();
+            return recipes;
+        }
+
         public async Task<bool> SaveAll ()
         {
             return await _dataContext.SaveChangesAsync () > 0;
         }
+
     }
 }

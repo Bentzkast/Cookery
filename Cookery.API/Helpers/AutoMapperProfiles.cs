@@ -11,9 +11,15 @@ namespace Cookery.API.Helpers
             CreateMap<User, UserForListDto> ();
             CreateMap<User, UserForDetailedDto> ();
             CreateMap<Recipe, RecipesForDetailedDto> ()
-            .ForMember(dest => dest.DaysAgo, opt =>{
-                opt.ResolveUsing(d => d.DateAdded.CalculateDaysAgo());
-            });
+                .ForMember (dest => dest.DaysAgo, opt =>
+                {
+                    opt.ResolveUsing (d => d.DateAdded.CalculateDaysAgo ());
+                });
+            CreateMap<Recipe, RecipesForListDto> ()
+                .ForMember (dest => dest.DaysAgo, opt =>
+                {
+                    opt.ResolveUsing (d => d.DateAdded.CalculateDaysAgo ());
+                });
         }
     }
 }

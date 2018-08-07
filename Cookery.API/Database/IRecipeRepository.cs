@@ -12,5 +12,8 @@ namespace Cookery.API.Database
         Task<bool> SaveAll ();
         Task<IEnumerable<User>> GetUsers ();
         Task<User> GetUser (int id);
+        Task<IEnumerable<Recipe>> GetRecipes ();
+        Task<Recipe> GetRecipe (int id);
+
     }
 }
