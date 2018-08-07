@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Cookery.API.Database;
 using Cookery.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,13 +37,22 @@ namespace Cookery.API
     {
       // microsoft entity framework sqlite
       services.AddDbContext<DataContext> (x => x.UseSqlite (Configuration.GetConnectionString ("DefaultConnection")));
-      services.AddMvc ().SetCompatibilityVersion (CompatibilityVersion.Version_2_1);
-
+      services.AddMvc ().SetCompatibilityVersion (CompatibilityVersion.Version_2_1)
+        .AddJsonOptions (opt =>
+        {
+          opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+        });
       // enable cors service
       services.AddCors ();
 
+      services.AddAutoMapper();
+
+      services.AddTransient<Seed> ();
+
       // singleton, transient : light weight stateless services,
       services.AddScoped<IAuthRepository, AuthRepository> ();
+
+      services.AddScoped<IRecipeRepository, RecipeRepository> ();
 
       // authorization with JWT
       services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
@@ -63,7 +73,7 @@ namespace Cookery.API
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure (IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure (IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
     {
       if (env.IsDevelopment ())
       {
@@ -91,6 +101,9 @@ namespace Cookery.API
       }
 
       // app.UseHttpsRedirection();
+
+      // custom seeder to place dummy json data to the database
+      // seeder.SeedUsers ();
 
       // enable cors 
       app.UseCors (x => x.AllowAnyOrigin ().AllowAnyMethod ().AllowAnyHeader ());

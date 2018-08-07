@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http;
 
 namespace Cookery.API.Helpers
@@ -10,6 +11,13 @@ namespace Cookery.API.Helpers
             response.Headers.Add ("Application-Error", message);
             response.Headers.Add ("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add ("Access-Control-Allow-Origin", "*");
+        }
+
+        public static int CalculateDaysAgo(this DateTime theDateTime)
+        {
+            var days = (DateTime.Today - theDateTime).Days;
+
+            return days;
         }
     }
 }
