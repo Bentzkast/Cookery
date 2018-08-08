@@ -24,6 +24,13 @@ import { RecipeCardComponent } from './recipe/recipe-card/recipe-card.component'
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeDetailResolver } from './_resolvers/recipe-detail.resolver';
 import { RecipeListResolver } from './_resolvers/recipe-list.resolver';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { UserListResolver } from './_resolvers/user-list.resolver';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -39,7 +46,10 @@ export function tokenGetter() {
     MessagesComponent,
     FavoritesComponent,
     RecipeCardComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    UserDetailComponent,
+    UserListComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +74,11 @@ export function tokenGetter() {
     UserService,
     RecipeService,
     RecipeDetailResolver,
-    RecipeListResolver
+    RecipeListResolver,
+    UserDetailResolver,
+    UserListResolver,
+    UserEditResolver,
+    PreventUnsavedChanges
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class="row">
+    <div *ngFor="let user of users" class="col-sm-6">
+      <div class="card">
+        <img src="{{user.picture}}" alt="{{user.username}}" class="card-img-top img-thumbnail">
+        <button class="btn btn-success ml-4" [routerLink]="['/users/', user.id]">Check out</button>
+        <div class="card-body">
+          <h5 class="card-title">
+            {{user.username}}
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ namespace Cookery.API.Dtos
         public int Id { get; set; }
         public string Name { get; set; }
         public string PictureUrl { get; set; }
+        public string Tags { get; set; }
         public int DaysAgo { get; set; }
     }
 }

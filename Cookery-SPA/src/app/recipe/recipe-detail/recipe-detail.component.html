@@ -6,19 +6,19 @@
         <div class="card-body">
           <div>
             <strong>Price lvl</strong>
-            <p>TODO</p>
+            <p *ngFor="let item of ' '.repeat(recipe.priceLvl).split('')">*</p>
           </div>
           <div>
             <strong>Cooking Time</strong>
-            <p>TODO</p>
+            <p>{{recipe.cookingTimeInMin}} Min</p>
           </div>
           <div>
             <strong>Days Ago</strong>
-            <p>TODO</p>
+            <p>{{recipe.daysAgo}}</p>
           </div>
           <div>
             <strong>By </strong>
-            <p>TODO</p>
+            <p>{{recipe.userId}}</p>
           </div>
         </div>
         <div class="card-footer">
@@ -37,7 +37,7 @@
             <h4>Description</h4>
             <p>{{recipe.description}}</p>
             <h4>Tags</h4>
-            <p>recipe.tags</p>
+            <p>{{recipe.tags}}</p>
           </tab>
           <tab heading="Ingredients">
             <h4>Ingredients</h4>

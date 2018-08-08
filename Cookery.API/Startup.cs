@@ -45,7 +45,7 @@ namespace Cookery.API
       // enable cors service
       services.AddCors ();
 
-      services.AddAutoMapper();
+      services.AddAutoMapper ();
 
       services.AddTransient<Seed> ();
 

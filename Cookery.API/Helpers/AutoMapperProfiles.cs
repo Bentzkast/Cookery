@@ -20,6 +20,7 @@ namespace Cookery.API.Helpers
                 {
                     opt.ResolveUsing (d => d.DateAdded.CalculateDaysAgo ());
                 });
+            CreateMap<UserForUpdateDto, User>();
         }
     }
 }

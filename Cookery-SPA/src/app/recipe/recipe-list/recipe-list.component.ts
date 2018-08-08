@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../_models/recipe';
 import { RecipeService } from '../../_services/recipe.service';
 import { AlertifyService } from '../../_services/alertify.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
