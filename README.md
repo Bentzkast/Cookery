@@ -8,6 +8,7 @@ services
 -   auth0jwt 2.0.0
 -   ngx boostrap 3.0.01
 -   bootswatch theme
+-   ngx gallery
 
 dotnet - api
 
